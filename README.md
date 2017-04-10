@@ -1,37 +1,21 @@
-## Welcome to GitHub Pages
+---
+title: "Readme"
+---
 
-You can use the [editor on GitHub](https://github.com/notifme/notifme-docs/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+## Notif.me Documentation
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+<div style="text-align:center; margin: 20px 0;">
+  <img src="https://www.notif.me/static/logo.png" alt="Notif.me logo" />
+</div>
 
-### Markdown
+[Notif.me](https://www.notif.me) is an API to send emails, webpushs, and other notifications.
+We intend to be a no-brainer solution for developers to spare you from integrating many providers.
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+### Contribute
 
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/notifme/notifme-docs/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+See an error or something missing? [File an issue](https://github.com/notifme/notifme-docs/issues/new) or propose a pull request by <a target="_blank" href="https://help.github.com/articles/editing-files-in-your-repository/">clicking on the edit link</a>.
+All contributions are very welcome.
 
 ### Support or Contact
 
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+Need to contact a human? You can [contact us](https://www.notif.me/contact) and we’ll help you.
