@@ -4,10 +4,23 @@
 @import "{{ site.theme }}";
 
 header {
-  padding-top: 24px;
-  padding-bottom: 24px;
-
   h1 {
     font-size: 42px;
+  }
+}
+
+#main-content {
+  h3 {
+    font-size: 22px;
+    color: #666;
+
+    &:before {
+      content: "//";
+      padding-right: 0.3em;
+    }
+  }
+
+  a {
+    color: #637e9b;
   }
 }
