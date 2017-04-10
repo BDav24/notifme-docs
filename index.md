@@ -6,7 +6,7 @@ layout: default
 :zap: [Getting started](/notifme-docs/guides/getting-started/)
 
 ### API reference
-:rocket: [/api/notification](/notifme-docs/)
+:rocket: [/api/notification](http://docs.notifme.apiary.io)
 
 ### Code examples
 - [Curl](/notifme-docs/code-examples/curl)
