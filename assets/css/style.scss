@@ -1,0 +1,13 @@
+---
+---
+
+@import "{{ site.theme }}";
+
+header {
+  padding-top: 24px;
+  padding-bottom: 24px;
+
+  h1 {
+    font-size: 42px;
+  }
+}
