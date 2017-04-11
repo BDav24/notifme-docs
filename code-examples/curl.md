@@ -7,7 +7,7 @@ title: Curl example
 ```shell
 curl -X POST \
   https://[subdomain].notif.me/api/notification \
-  -H 'authorization: Bearer your-api-token' \
+  -H 'authorization: your-api-token' \
   -H 'content-type: application/json' \
   -d '{
     "toUserId": "your-user-id",

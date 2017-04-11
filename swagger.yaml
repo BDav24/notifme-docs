@@ -15,7 +15,7 @@ securityDefinitions:
   apikey:
     type: apiKey
     in: header
-    name: authorization
+    name: Authorization
 consumes:
   - application/json
 produces:
