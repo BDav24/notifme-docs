@@ -17,20 +17,6 @@ produces:
   - application/json
 paths:
   /notification:
-    get:
-      description: Returns all notification requests you have sent to the API.
-      operationId: findAllRequests
-      responses:
-        200:
-          description: request response
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/Request'
-        default:
-          description: unexpected error
-          schema:
-            $ref: '#/definitions/Error'
     post:
       description: Creates a new notification request.
       operationId: postRequest
@@ -46,6 +32,20 @@ paths:
           description: new request response
           schema:
             $ref: '#/definitions/NewRequestResponse'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+    get:
+      description: Returns all notification requests you have sent to the API.
+      operationId: findAllRequests
+      responses:
+        200:
+          description: request response
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Request'
         default:
           description: unexpected error
           schema:
