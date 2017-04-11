@@ -1,4 +1,4 @@
-swagger: "2.0"
+swagger: '2.0'
 info:
   version: 0.0.1
   title: Notif.me API reference
@@ -6,11 +6,16 @@ info:
   contact:
     name: Notif.me support
     email: contact@notif.me
-    url: https://www.notif.me
-host: www.notif.me
+    url: https://www.notif.me/contact
+host: demo.notif.me
 basePath: /api
 schemes:
   - https
+securityDefinitions:
+  apikey:
+    type: apiKey
+    in: header
+    name: authorization
 consumes:
   - application/json
 produces:
@@ -26,30 +31,30 @@ paths:
           description: Raw request
           required: true
           schema:
-            $ref: '#/definitions/NewRequestParams'
+            $ref: '#/definitions/RequestParams'
       responses:
         200:
-          description: new request response
+          description: Request accepted
           schema:
             $ref: '#/definitions/NewRequestResponse'
-        default:
-          description: unexpected error
+        400:
+          description: Form error
           schema:
-            $ref: '#/definitions/Error'
+            $ref: '#/definitions/FormError'
+      security:
+        - apikey: []
     get:
       description: Returns all notification requests you have sent to the API.
       operationId: findAllRequests
       responses:
         200:
-          description: request response
+          description: Request response
           schema:
             type: array
             items:
               $ref: '#/definitions/Request'
-        default:
-          description: unexpected error
-          schema:
-            $ref: '#/definitions/Error'
+      security:
+        - apikey: []
   /notification/{id}:
     get:
       description: Returns a notification request by id
@@ -62,39 +67,124 @@ paths:
           type: string
       responses:
         200:
-          description: request response
+          description: Request response
           schema:
             $ref: '#/definitions/Request'
-        default:
-          description: unexpected error
-          schema:
-            $ref: '#/definitions/Error'
+      security:
+        - apikey: []
 definitions:
   Request:
     required:
       - id
+      - created
+      - state
+      - env
       - raw
+      - data
     properties:
       id:
         type: string
+      created:
+        type: string
+        format: date-time
+      state:
+        type: string
+        enum:
+          - pending
+          - done
+          - error
+      env:
+        type: string
       raw:
-        $ref: '#/definitions/NewRequestParams'
-  NewRequestParams:
+        $ref: '#/definitions/RequestParams'
+      data:
+        type: object
+      error:
+        type: string
+      stats:
+        type: object
+  RequestParams:
     required:
       - toUserId
+      - template
+    example:
+      toUserId: '0123456789'
+      template:
+        name: welcome
+      params:
+        name: James
     properties:
       toUserId:
         type: string
+      template:
+        type: object
+        required:
+          - name
+        properties:
+          name:
+            type: string
+            description: find active template by name
+          id:
+            type: string
+            description: force template event if it's not published
+      params:
+        type: object
+      to:
+        type: object
+        properties:
+          email:
+            type: string
+          webpush:
+            type: string
+          fbpage:
+            type: string
   NewRequestResponse:
     required:
       - id
       - date
+    example:
+      id: '58e7b4dc83e1b700115855ec'
+      date: '2024-01-01T12:00:00.535Z'
     properties:
       id:
         type: string
       date:
         type: string
         format: date-time
+  FormError:
+    example:
+      status: 401
+      type: 'param_check'
+      message: 'You have an error in your params'
+      errors:
+        - type: required
+          name: 'toUserId'
+          message: 'This param is required'
+    allOf:
+      - $ref: '#/definitions/Error'
+      - required:
+        - errors
+        properties:
+          errors:
+            type: array
+            items:
+              $ref: '#/definitions/FormFieldError'
+  FormFieldError:
+    required:
+      - type
+      - name
+      - message
+    example:
+      type: 'required'
+      name: 'fieldname'
+      message: 'This param is required'
+    properties:
+      type:
+        type: string
+      name:
+        type: string
+      message:
+        type: string
   Error:
     required:
       - status
@@ -104,6 +194,10 @@ definitions:
       status:
         type: integer
         format: int32
+        enum:
+          - 400
+          - 401
+          - 500
       type:
         type: string
       message:
