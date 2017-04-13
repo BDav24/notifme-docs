@@ -8,9 +8,11 @@ title: Getting started
 1. Launch the devtool with node:
  ```
 yarn global add notifme-devtool
-notifme-devtool -u [app].notif.me --first
+notifme-devtool --tuto
  ```
- (Or with docker: `docker run -p 1080:1080 --rm -it notifme/devtool -u [app].notif.me --first`)
+ (Or with npm: `npm install -g notifme-devtool && notifme-devtool --tuto`)
+ <br>
+ (Or with docker: `docker run -p 1080:1080 --rm -it notifme/devtool --tuto`)
 1. Follow the devtool's instructions
 
   ...
