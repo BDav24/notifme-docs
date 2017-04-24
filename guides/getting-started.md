@@ -15,3 +15,5 @@ notifme-devtool tuto
  (Or with docker: `docker run -p 1080:1080 --rm -it notifme/devtool tuto`)
 
 2. Follow the devtool's instructions
+
+![Getting started gif](/notifme-docs/assets/img/getting-started.gif)
