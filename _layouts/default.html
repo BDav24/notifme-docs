@@ -45,16 +45,12 @@
         </section>
 
         <aside id="sidebar">
-          {% if site.github.is_project_page %}
-            <p class="repo-owner">
-              :octocat:
-              An error? File an issue or propose a pull request on
-              <a href="{{ site.github.repository_url | replace_first: 'http://', 'https://' }}"
-                target="_blank">
-                {{ site.github.repository_name }}
-              </a>
-            </p>
-          {% endif %}
+          <ul>
+            <li><span class="title">{{page.title}}</span></li>
+            {% for entry in page.menu %}
+            <li><a href="{{entry.anchor}}">{{entry.title}}</a></li>
+            {% endfor %}
+          </ul>
         </aside>
       </div>
     </div>
