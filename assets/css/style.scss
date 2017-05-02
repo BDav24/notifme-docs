@@ -3,10 +3,29 @@
 
 @import "{{ site.theme }}";
 
+html, body {
+  font-size: 1rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background: white;
+}
+
+aside#sidebar {
+  background: none;
+  border-left: 1px solid #eee;
+}
+
 header {
   h1 {
     font-size: 42px;
   }
+}
+
+blockquote {
+  margin: 0 0 1rem;
+  padding: 20px 1rem 1px;
+  background: #f7f7f9;
+  border-left: 0.25rem solid #818a91;
+  font-size: inherit;
 }
 
 #main-content {
@@ -33,4 +52,296 @@ header {
   a {
     color: #637e9b;
   }
+}
+
+// highlight
+code {
+  padding: 0.2rem 0.4rem;
+  color: #b8006c;
+  background-color: #eceeef;
+  border-radius: 0.25rem;
+}
+pre code {
+  background-color: transparent;
+  color: inherit;
+  padding: 0;
+}
+.language-sh pre {
+    background: #373a3c;
+    color: white !important;
+    -webkit-font-smoothing: antialiased;
+    border-left: 4px solid #9CD732
+}
+
+.language-sh pre span {
+    color: inherit !important
+}
+
+.language-sh pre span.c {
+    color: #aab0b5 !important
+}
+
+.highlight {
+    position: relative;
+    margin: 1rem 0;
+    border-left: 4px solid #E8BD36;
+    background: #fcfbf5
+}
+
+pre.highlight {
+    padding: 0.5rem 1rem
+}
+
+.editor-content,.editor .CodeMirror {
+    padding: 5px 0
+}
+
+.editor-content {
+    overflow-y: visible;
+    overflow-x: auto
+}
+
+.editor-content pre {
+    margin: 0
+}
+
+.editor-code pre {
+    color: inherit
+}
+
+.editor-gutter {
+    padding-left: 17px;
+    padding-right: 8px
+}
+
+.editor-gutter,.editor .CodeMirror-gutters {
+    border-right: 1px solid #ccc;
+    border-right: 1px solid #edcc64
+}
+
+.editor-line,.editor .CodeMirror-linenumber {
+    color: #e5b51f
+}
+
+.editor-code {
+    width: 100%
+}
+
+.editor-code,.editor .CodeMirror-lines {
+    padding-top: 5px;
+    padding-bottom: 5px
+}
+
+.editor-code,.editor .CodeMirror-line {
+    padding-left: 10px;
+    padding-right: 10px
+}
+
+.editor .CodeMirror {
+    font-family: Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    height: auto;
+    line-height: inherit;
+    background: none;
+    color: inherit
+}
+
+.editor .CodeMirror-gutters {
+    background: none;
+    padding-right: 5px
+}
+
+.editor .CodeMirror-gutter-wrapper,.editor .CodeMirror pre {
+    font-size: 95%
+}
+
+.editor .CodeMirror-scroll {
+    position: relative
+}
+
+.editor .CodeMirror-gutters {
+    min-height: auto;
+    height: auto !important;
+    position: absolute;
+    top: 0;
+    bottom: 30px
+}
+
+.editor-messages {
+    position: absolute;
+    left: -4px;
+    right: 0
+}
+
+.flow-error-target {
+    position: relative;
+    display: inline-block;
+    cursor: help
+}
+
+.flow-error-target::before {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-bottom: 2px dotted #d5382f
+}
+
+.flow-error-target .flow-error-target::before {
+    display: none
+}
+
+.flow-error-target-active {
+    background: rgba(213,56,47,0.4)
+}
+
+.flow-error-target-active:hover {
+    background: #d5382f;
+    color: white;
+    margin-left: -4px;
+    margin-right: -4px;
+    padding-left: 4px;
+    padding-right: 4px
+}
+
+.flow-error-target-active:hover * {
+    color: inherit !important
+}
+
+.flow-error-target-active .flow-error-target-active {
+    background: transparent
+}
+
+.flow-error {
+    display: none;
+    z-index: 1;
+    background: #d5382f;
+    color: white;
+    padding: 0.5rem 1rem;
+    font-family: Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace
+}
+
+.flow-error span {
+    display: inline-block;
+    padding: 0 0.2em;
+    background: rgba(255,255,255,0.2)
+}
+
+.flow-error-active {
+    display: block
+}
+
+.flow-error .flow-error-highlighted {
+    background: white;
+    color: #d5382f
+}
+
+.highlight {
+    background-color: #fcfbf5;
+    color: #8b6e11
+}
+
+.highlight .c,.highlight .cm,.highlight .comment,.highlight .c1,.highlight .gp,.highlight span.cm-comment {
+    color: #a58216;
+    font-style: italic
+}
+
+.highlight .cp,.highlight .cs {
+    color: #a58216;
+    font-weight: bold
+}
+
+.highlight .k,.highlight .T_ASYNC,.highlight .T_AWAIT,.highlight .T_BREAK,.highlight .T_CASE,.highlight .T_CATCH,.highlight .T_CONTINUE,.highlight .T_DEBUGGER,.highlight .T_DECLARE,.highlight .T_DEFAULT,.highlight .T_DELETE,.highlight .T_DO,.highlight .T_ELSE,.highlight .T_ENUM,.highlight .T_EXPORT,.highlight .T_EXTENDS,.highlight .T_FINALLY,.highlight .T_FOR,.highlight .T_IF,.highlight .T_IMPLEMENTS,.highlight .T_IMPORT,.highlight .T_IN,.highlight .T_INSTANCEOF,.highlight .T_INTERFACE,.highlight .T_NEW,.highlight .T_OF,.highlight .T_PACKAGE,.highlight .T_PRIVATE,.highlight .T_PROTECTED,.highlight .T_PUBLIC,.highlight .T_RETURN,.highlight .T_STATIC,.highlight .T_SUPER,.highlight .T_SWITCH,.highlight .T_THIS,.highlight .T_THROW,.highlight .T_TRY,.highlight .T_TYPE,.highlight .T_TYPEOF,.highlight .T_VOID,.highlight .T_WHILE,.highlight .T_WITH,.highlight .T_YIELD,.highlight .kn,.highlight .kp,.highlight .kr,.highlight .kt,.highlight .T_ANY_TYPE,.highlight .T_BOOLEAN_TYPE,.highlight .T_NUMBER_TYPE,.highlight .T_STRING_TYPE,.highlight .T_VOID_TYPE,.highlight span.cm-keyword,.highlight span.cm-variable-3 {
+    color: #a61c83
+}
+
+.highlight .o,.highlight .T_AND,.highlight .T_ASSIGN,.highlight .T_BIT_AND,.highlight .T_BIT_AND_ASSIGN,.highlight .T_BIT_NOT,.highlight .T_BIT_OR,.highlight .T_BIT_OR_ASSIGN,.highlight .T_BIT_XOR,.highlight .T_BIT_XOR_ASSIGN,.highlight .T_COLON,.highlight .T_DECR,.highlight .T_DIV_ASSIGN,.highlight .T_EQUAL,.highlight .T_GREATER_THAN_EQUAL,.highlight .T_INCR,.highlight .T_LESS_THAN_EQUAL,.highlight .T_LSHIFT,.highlight .T_LSHIFT_ASSIGN,.highlight .T_MINUS,.highlight .T_MINUS_ASSIGN,.highlight .T_MOD,.highlight .T_MOD_ASSIGN,.highlight .T_MULT,.highlight .T_MULT_ASSIGN,.highlight .T_NOT,.highlight .T_NOT_EQUAL,.highlight .T_OR,.highlight .T_PLING,.highlight .T_PLUS,.highlight .T_PLUS_ASSIGN,.highlight .T_RSHIFT,.highlight .T_RSHIFT3,.highlight .T_RSHIFT3_ASSIGN,.highlight .T_RSHIFT_ASSIGN,.highlight .T_STRICT_EQUAL,.highlight .T_STRICT_NOT_EQUAL,.highlight .T_DIV.normal,.highlight .T_GREATER_THAN.normal,.highlight .T_LESS_THAN.normal,.highlight .ow,.highlight span.cm-operator {
+    color: #8b6e11
+}
+
+.highlight .kd,.highlight .T_CLASS,.highlight .T_CONST,.highlight .T_FUNCTION,.highlight .T_LET,.highlight .T_VAR {
+    color: #a61c83
+}
+
+.highlight .kc,.highlight .ni {
+    color: #cc6d0d
+}
+
+.highlight .se {
+    color: #009cac
+}
+
+.highlight .m,.highlight .T_NUMBER,.highlight .mf,.highlight .mh,.highlight .mi,.highlight .il,.highlight .mo,.highlight span.cm-number {
+    color: #cc6d0d
+}
+
+.highlight .no {
+    color: #009cac
+}
+
+.highlight .ss {
+    color: #257831
+}
+
+.highlight .nb,.highlight .bp,.highlight .nd,.highlight .nv,.highlight .T_IDENTIFIER,.highlight .T_JSX_IDENTIFIER,.highlight .vc,.highlight .vg,.highlight .vi,.highlight span.cm-def,.highlight span.cm-variable,.highlight span.cm-property,.highlight span.cm-variable-2 {
+    color: #b8006c
+}
+
+.highlight .s,.highlight .sb,.highlight .T_JSX_TEXT,.highlight .sc,.highlight .sd,.highlight .s2,.highlight .sh,.highlight .sx,.highlight .s1,.highlight .T_STRING,.highlight .T_TEMPLATE_PART,.highlight span.cm-string,.highlight span.cm-string-2 {
+    color: #257831
+}
+
+.highlight .sr,.highlight .T_REGEXP {
+    color: #009cac
+}
+
+.highlight .gh {
+    color: #0d5286
+}
+
+.highlight .gs {
+    color: #b87705;
+    font-weight: bold
+}
+
+.highlight .ge {
+    color: #a61c83;
+    font-style: italic
+}
+
+.highlight .si {
+    color: #6b2700
+}
+
+.highlight .nf {
+    color: #0d5286
+}
+
+.highlight .nc,.highlight .T_IDENTIFIER.type,.highlight .T_JSX_IDENTIFIER.type,.highlight .nn,.highlight span.cm-qualifier {
+    color: #b87705
+}
+
+.highlight .nt,.highlight span.cm-tag {
+    color: #b8006c
+}
+
+.highlight .na,.highlight span.cm-attribute {
+    color: #cc6d0d
+}
+
+.highlight .err,.highlight .T_ERROR,.highlight .gr,.highlight span.cm-error,.highlight span.cm-invalidchar {
+    color: #dcb433 !important;
+    background-color: #b8006c !important
+}
+
+.highlight .go,.highlight .gu,.highlight .gt {
+    display: inline-block;
+    transform: scale(1.5);
+    background: red;
+    color: white
+}
+
+.highlight .go::after,.highlight .gu::after,.highlight .gt::after {
+    content: "!!!THIS IS A BUG, PLEASE REPORT IT!!!"
 }
