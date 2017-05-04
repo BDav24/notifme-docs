@@ -29,6 +29,15 @@ header {
   }
 }
 
+h4 {
+  font-family: inherit !important;
+  font-size: 19px !important;
+
+  &:before {
+    content: none;
+  }
+}
+
 blockquote {
   margin: 0 0 1rem;
   padding: 20px 1rem 1px;

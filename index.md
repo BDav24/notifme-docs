@@ -1,16 +1,17 @@
 ---
 layout: default
-title: /
 ---
+
+Welcome !
 
 ### [Getting started](/notifme-docs/guides/getting-started)
 
-### User guides
-* [Send a notification](http://notifme-docs/guides/api-send)
-* [Channel Email](http://notifme-docs/guides/channel-email)
-* [Channel Webpush](http://notifme-docs/guides/channel-webpush)
-* [Channel Facebook Messenger](http://notifme-docs/guides/channel-fbpage)
-* [The devtool](http://notifme-docs/guides/devtool)
+### User guidesl
+* [Send a notification](/notifme-docs/guides/api-send)
+* [Send an Email](/notifme-docs/guides/channel-email)
+* [Send a Webpush](/notifme-docs/guides/channel-webpush)
+* [Send a Facebook Message](/notifme-docs/guides/channel-fbpage)
+* [The devtool](/notifme-docs/guides/devtool)
 
 ### API reference
 :rocket: [/api/notification](http://docs.notifme.apiary.io)
