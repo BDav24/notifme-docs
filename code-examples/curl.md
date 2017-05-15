@@ -12,7 +12,7 @@ curl -X POST \
   -d '{
     "toUserId": "your-user-id",
     "to": {
-        "email": "test@demo.com"
+      "email": "test@demo.com"
     },
     "template": {
       "name": "welcome",

@@ -8,6 +8,7 @@
     <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}" media="screen" type="text/css">
     <link rel="stylesheet" href="{{ '/assets/css/print.css' | relative_url }}" media="print" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
     <link rel="stylesheet" href="https://flow.org/assets/main-9b486d3c0a771c71ae73a2724b355e4cba85f45758c89f75d21b64a01661948e.css?t=2017-04-28T12:32:34+00:00" media="print" type="text/css">
 
     <!--[if lt IE 9]>
@@ -45,12 +46,26 @@
         </section>
 
         <aside id="sidebar">
-          <ul>
-            <li><span class="title">{{page.title}}</span></li>
-            {% for entry in page.menu %}
-            <li><a href="{{entry.anchor}}">{{entry.title}}</a></li>
-            {% endfor %}
-          </ul>
+          {% if page.title %}
+            <ul>
+              <li><span class="title">{{page.title}}</span></li>
+              {% for entry in page.menu %}
+                <li><a href="{{entry.anchor}}">{{entry.title}}</a></li>
+              {% endfor %}
+            </ul>
+            <br><br><br>
+            <hr>
+          {% endif %}
+          {% if site.github.is_project_page %}
+            <p class="repo-owner">
+              :octocat:
+              An error? File an issue or propose a pull request on
+              <a href="{{ site.github.repository_url | replace_first: 'http://', 'https://' }}"
+                target="_blank">
+                {{ site.github.repository_name }}
+              </a>
+            </p>
+          {% endif %}
         </aside>
       </div>
     </div>

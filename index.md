@@ -2,14 +2,29 @@
 layout: default
 ---
 
-Welcome !
+<style>
+  ul { list-style: none outside none; padding: 0; }
+  li { padding-bottom: 7px; }
 
-### [Getting started](/notifme-docs/guides/getting-started)
+  i.fa, #main-content img.emoji {
+    font-size: 20px;
+    margin-right: 7px;
+    color: #777;
+  }
+</style>
 
-### User guidesl
-* [Send an Email](/notifme-docs/guides/channel-email)
-* [Send a Webpush](/notifme-docs/guides/channel-webpush)
-* [Send a Facebook Message](/notifme-docs/guides/channel-fbpage)
+### Welcome to Notif.me
+:zap: [Getting started](/notifme-docs/guides/getting-started)
 
-<!-- ### API reference
-:rocket: [/api/notification](http://docs.notifme.apiary.io) -->
+### User guides
+- :construction: [Test my notifications in local](/notifme-docs/guides/getting-started#devtool)
+- :sparkles: [Quick integration](/notifme-docs/guides/getting-started#integrate)
+- <i class="fa fa-envelope" aria-hidden="true"></i> [Send an email](/notifme-docs/guides/channel-email)
+- <i class="fa fa-chrome" aria-hidden="true"></i> [Send a webpush](/notifme-docs/guides/channel-webpush)
+- <i class="fa fa-facebook-square" aria-hidden="true"></i> [Send a facebook message](/notifme-docs/guides/channel-fbpage)
+
+### API reference
+:rocket: [/api/notification](http://docs.notifme.apiary.io)
+
+### Need help?
+:love_letter: [Contact a human](https://www.notif.me/contact)
