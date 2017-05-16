@@ -3,10 +3,10 @@ layout: default
 title: Send a webpush
 menu:
   - title: Prepare your site
-    anchor: '#prepare'
-  - title: The content
+    anchor: '#configure'
+  - title: Webpush content
     anchor: '#content'
-  - title: The events
+  - title: Webhook events
     anchor: '#events'
 ---
 
@@ -14,66 +14,63 @@ menu:
 
 <div>
   <img src="/notifme-docs/assets/img/webpush-top.png"
-    style="float: right;margin: 0 0 40px 40px;max-width: calc((100% - 40px)/2);g" />
+    style="float: right; margin: 0 0 40px 40px; max-width: calc((100% - 40px) / 2);" />
 </div>
 
+Webpush notifications are messages that come from a site. You get them through your browser on your
+desktop or your Android device even if your site or the browser is closed.
 
-Web push notifications are messages that come from a site. You get them on your desktop or your Android device
-even if your site or the browser is not opened.
+Push notifications are an incredibly effective and cheap way to build deeper user engagement with
+your application without asking them their email or to install an app.
 
-Push notifications are an incredibly effective and cheap way to build deeper user engagement with your application
-without asking them their email or to install an app.
+<a id="configure"></a>
+### [Prepare your site](#configure)
 
-<a id="prepare"></a>
-### [Prepare your site](#prepare)
-
-_**Important**: Your must serve the page you ask the permission and the service worker with `HTTPS`
-only. If you don't have support for `HTTPS` please contact us to an alternative solution. During development
-`HTTP` is allowed by the browser only on `localhost`_
+>_**Important**: your must serve the page you ask the permission from and the service worker with
+`HTTPS` only. If you don't have support for `HTTPS` please [contact us](https://www.notif.me/contact).
+During development `HTTP` is allowed by the browser on `localhost`._
 
 There are 2 steps in order to send a webpush to a user with the help of our SDK.
 
-#### Register a service worker that will handle a push event and show the notification.
+#### 1. Register a service worker that will handle a push event and show the notification
 
 Serve at the **top-level root** of your site directory a file called `sw.js`
-(ie `https://yoursite.com/sw.js`) containing the following code
+(i.e. `https://yoursite.com/sw.js`) containing the following code:
 
 ```javascript
-self.NOTIFME_ENDPOINT='[subdomain].notif.me';
-self.NOTIFME_ENV='Production';
+self.NOTIFME_ENDPOINT = '[subdomain].notif.me' // replace subdomain
+self.NOTIFME_ENV = 'Production' // 'Development' in local
 
-importScripts('https://[subdomain].notif.me/static/sdk.js');
+importScripts('https://[subdomain].notif.me/static/sdk.js')
 ```
 
-#### Asking them the permission for you site to show a Notification.
+#### 2. Asking users the permission to receive your notifications
 
-Add the following code to your site
+Add the following code to your site:
 
 ```html
 <script type="text/javascript" src="https://[subdomain].notif.me/static/sdk.js"></script>
 <script type="text/javascript">
-  const notifme = new Notifme('demo.dev.notif.me', 'Production');
-
-
+  const notifme = new Notifme('demo.dev.notif.me', 'Production')
   /*
-   * When you are ready to ask the permission to your user,
-   * use the register function
+   * When you are ready to ask the permission to your user, use the register
+   * function. It might after a click on a button or anything you want.
    */
   if (notifme.isWebpushSupported()) {
-      notifme.register().then((token) => {
-        // send this token to your backend
-      });
+    notifme.register('sw.js').then((token) => {
+      // Send and save this token in your backend.
+    });
   }
 </script>
 ```
 
-The register function displays a native browser prompt to the user asking him to allow your site to show
-notification.
+The register function displays a native browser prompt to the user asking him to allow your
+notifications.
 
 ![prompt](/notifme-docs/assets/img/webpush-prompt.png)
 
-The register function returns a `Promise` which be resolved with a token you have to save on your backend.
-This token will be used as the endpoint on the `to` parameter.
+The register function returns a `Promise` which be resolved with a token you have to save in your
+backend. This token will be used as the user endpoint in the parameter `to`.
 
 ```json
 {
@@ -83,19 +80,19 @@ This token will be used as the endpoint on the `to` parameter.
 }
 ```
 
-> **Note**: To avoid frustration or misunderstanding of your users, Ask them to subscribe to push
-at a time when the benefit is obvious. You can find some good advices
-[here](https://web-push-book.gauntface.com/chapter-03/01-permission-ux/)
+> **Note**: to avoid frustration or misunderstanding of your users, ask them to subscribe to your
+webpushs at a time when their benefit is obvious. You can some best practices
+[here](https://web-push-book.gauntface.com/chapter-03/01-permission-ux/).
 
 <a id="content"></a>
-### [The content](#content)
+### [Webpush content](#content)
 
 ![ui](/notifme-docs/assets/img/webpush-ui.png)
 
-Notif.me does not reinvent the wheel and use the standard JSON to describe a webpush with one additional
-fields `redirects`
+Notif.me API does not reinvent the wheel and uses the standard JSON to describe a webpush with only
+one additional field: `redirects`.
 
-Exemple of a JSON.
+Exemple of a JSON query:
 
 ```json
 {
@@ -119,27 +116,29 @@ Exemple of a JSON.
 }
 ```
 
-* `redirects` (object): A hashmap or urls to be opened when the user interacts with the notification.
-The key is the name of the action clicked. A special key `default` is used when the user cliks on the
-global notification window. In the above example if the user clicks on the action button "Share with your friends"
-a new tab will be opened browsing `https://www.notif.me/?click=share` while if he clicks on the global notification
-the tab will load `https://www.notif.me`.
-If you don't provide urls in `redirects` nothing will happen but you will receive a callback on the configured
-webhook.
+* `redirects` (object): a hashmap of URLs to be opened when the user interacts with the notification.
+The key is the name of the action clicked. A special key `default` is used when the user clicks on
+the global notification window. In the above example if the user clicks on the action button "Share
+with your friends" a new tab will be opened with the URL `https://www.notif.me/?click=share` while
+if he clicks on the global notification the tab will load `https://www.notif.me`.
+If you don't provide URLs in `redirects` nothing will happen but you will receive a callback on the
+configured webhook.
 
-Apart from the `requireInteraction` field, you can use {% raw %}{{Mustache}}{% endraw %} language on all fields.
+Apart from the `requireInteraction` field, you can use
+[{% raw %}{{ mustache }}{% endraw %}](https://mustache.github.io/mustache.5.html) templates on all
+fields.
 
-> **Note**: some fields are currently only supported on Chrome or/and Android
+> **Note**: some fields are currently only supported on Chrome or/and Android.
 
 <a id="events"></a>
-### [The events](#events)
+### [Webhook events](#events)
 
-You can register a webhook for these events (from the dashboard or the Api):
+You can register a webhook for these events (from the dashboard or the API):
 
-* `delivered`: The browser (precisely the service worker) has received the payload of the webpush.
-* `opened`: The webpush has been displayed to the user
-* `clicked`: The user clicks on an action button or on the global notification. If an action has been clicked
-the payload will contain an info object with the action.
+* `delivered`: the browser (precisely the service worker) has received the payload of the webpush.
+* `opened`: the webpush has been displayed to the user
+* `clicked`: the user has clicked on an action button or on the global notification. If an action
+has been clicked the payload will contain an info object with the action.
 ```json
 {
     "requestId": "XXX",
@@ -153,4 +152,4 @@ the payload will contain an info object with the action.
     }
 }
 ```
-* `closed`: The user has closed the notification
+* `closed`: the user has closed the notification

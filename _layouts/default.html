@@ -46,9 +46,9 @@
         </section>
 
         <aside id="sidebar">
-          {% if page.title %}
+          {% if page.title and page.menu | size %}
             <ul>
-              <li><span class="title">{{page.title}}</span></li>
+              <li><span class="title">&gt; {{page.title}}</span></li>
               {% for entry in page.menu %}
                 <li><a href="{{entry.anchor}}">{{entry.title}}</a></li>
               {% endfor %}

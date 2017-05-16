@@ -2,30 +2,31 @@
 layout: default
 title: Send a Facebook message
 menu:
-  - title: Enable the channel
-    anchor: '#prepare'
-  - title: The content
+  - title: Configure your page
+    anchor: '#configure'
+  - title: Message content
     anchor: '#content'
-  - title: The events
+  - title: Webhook events
     anchor: '#events'
 ---
 
 <div>
   <img src="/notifme-docs/assets/img/fbpage-top.png"
-    style="float: right;margin: 0 0 40px 40px;max-width: calc((100% - 40px)/3);" />
+    style="float: right; margin: 0 0 40px 40px; max-width: calc((100% - 40px) / 3);" />
 </div>
 
 ## Send a Facebook message
 
-If you are on Facebook and have a Facebook page, You can build a bot and users could interact with your bot.
+If you are on Facebook and have a Facebook page, you can build a bot for your users to interact
+with it.
 
 > _"Now people won't need to download an app to interact with you. Just build your bot and instantly
 reach people on whichever device and platform they use."_
 
-You can use also your bot to re-engage users repecting [Facebook policy](https://developers.facebook.com/docs/messenger-platform/policy-overview)
+You can use also your bot to re-engage users repecting [Facebook policy](https://developers.facebook.com/docs/messenger-platform/policy-overview).
 
-<a id="prepare"></a>
-### [Enable the channel](#prepare)
+<a id="configure"></a>
+### [Configure your Facebook page](#configure)
 
 If you are not comfortable with the Messenger platform please start with the official
 [documentation](https://messenger.fb.com/get-started).
@@ -43,7 +44,7 @@ it to your Facebook page.
 still receive all the events on your backend through a Notif.me webhook. -->
 
 <a id="content"></a>
-### [The content](#content)
+### [Message content](#content)
 
 For the template payload you can follow the official documentation [from Facebook](https://developers.facebook.com/docs/messenger-platform/send-api-reference#request) ommiting
 the recipient field. Instead you have to pass the recipient id (this id is a page scoped user id) in our `to`
@@ -60,7 +61,8 @@ field
 Each time a user interacts with your page you will receive this user id in the payload of the
 callback sent to your webhook.
 
-You can use {% raw %}{{Mustache}}{% endraw %} language in the payload of the facebook template.
+You can use [{% raw %}{{ mustache }}{% endraw %}](https://mustache.github.io/mustache.5.html)
+templates in the payload of the facebook template.
 
 _Example of template:_
 ```json
@@ -95,9 +97,10 @@ _Example of template:_
 ```
 
 <a id="events"></a>
-### [The events](#events)
+### [Webhook events](#events)
 
-This is a beta feature contact us if you want more information.
+This is a beta feature, please [contact us](https://www.notif.me/contact) if you want more
+information.
 
 <!-- Events are available only if you configure the Facebook webhooks to point to
 `https://[sudomain].notif.me/api/webhook/facebook`. The `requestId` field refers to the last request
