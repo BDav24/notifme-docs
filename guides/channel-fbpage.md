@@ -82,7 +82,7 @@ _Example of template:_
             "buttons": [
               {
                 "type": "web_url",
-                "url": "https://www.notif.me/share",
+                "url": "https://www.notif.me/?click=share",
                 "title": "Share"
               }
             ]

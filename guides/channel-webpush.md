@@ -114,7 +114,7 @@ Exemple of a JSON.
   "requireInteraction": true,
   "redirects": {
     "default": "https://www.notif.me",
-    "share": "https://www.notif.me/share"
+    "share": "https://www.notif.me/?click=share"
   }
 }
 ```
@@ -122,7 +122,7 @@ Exemple of a JSON.
 * `redirects` (object): A hashmap or urls to be opened when the user interacts with the notification.
 The key is the name of the action clicked. A special key `default` is used when the user cliks on the
 global notification window. In the above example if the user clicks on the action button "Share with your friends"
-a new tab will be opened browsing `https://www.notif.me/share` while if he clicks on the global notification
+a new tab will be opened browsing `https://www.notif.me/?click=share` while if he clicks on the global notification
 the tab will load `https://www.notif.me`.
 If you don't provide urls in `redirects` nothing will happen but you will receive a callback on the configured
 webhook.
