@@ -17,7 +17,7 @@ layout: default
 :zap: [Getting started](/notifme-docs/guides/getting-started)
 
 ### User guides
-- :construction: [Test my notifications in local](/notifme-docs/guides/getting-started#devtool)
+- :construction: [Test my notifications in local with the devtool](/notifme-docs/guides/devtool)
 - :sparkles: [Quick integration](/notifme-docs/guides/getting-started#integrate)
 - <i class="fa fa-envelope" aria-hidden="true"></i> [Send an email](/notifme-docs/guides/channel-email)
 - <i class="fa fa-chrome" aria-hidden="true"></i> [Send a webpush](/notifme-docs/guides/channel-webpush)
