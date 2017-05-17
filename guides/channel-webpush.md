@@ -41,7 +41,7 @@ Serve at the **top-level root** of your site directory a file called `sw.js`
 self.NOTIFME_ENDPOINT = '[subdomain].notif.me' // replace subdomain
 self.NOTIFME_ENV = 'Production' // 'Development' in local
 
-importScripts('https://[subdomain].notif.me/static/sdk.js')
+importScripts('https://[subdomain].notif.me/static/js/sdk.js')
 ```
 
 #### 2. Asking users the permission to receive your notifications
@@ -49,7 +49,7 @@ importScripts('https://[subdomain].notif.me/static/sdk.js')
 Add the following code to your site:
 
 ```html
-<script type="text/javascript" src="https://[subdomain].notif.me/static/sdk.js"></script>
+<script type="text/javascript" src="https://[subdomain].notif.me/static/js/sdk.js"></script>
 <script type="text/javascript">
   const notifme = new Notifme('demo.dev.notif.me', 'Production')
   /*
