@@ -51,7 +51,7 @@ Add the following code to your site:
 ```html
 <script type="text/javascript" src="https://[subdomain].notif.me/static/js/sdk.js"></script>
 <script type="text/javascript">
-  const notifme = new Notifme('demo.dev.notif.me', 'Production')
+  const notifme = new Notifme('[subdomain].notif.me', 'Production')
   /*
    * When you are ready to ask the permission to your user, use the register
    * function. It might after a click on a button or anything you want.
