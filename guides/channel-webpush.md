@@ -57,7 +57,7 @@ Add the following code to your site:
    * function. It might after a click on a button or anything you want.
    */
   if (notifme.isWebpushSupported()) {
-    notifme.register('sw.js').then((token) => {
+    notifme.register('/sw.js').then((token) => {
       // Send and save this token in your backend.
     });
   }
