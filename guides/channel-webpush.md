@@ -56,11 +56,13 @@ Add the following code to your site:
    * When you are ready to ask the permission to your user, use the register
    * function. It might after a click on a button or anything you want.
    */
-  if (notifme.isWebpushSupported()) {
-    notifme.register('/sw.js').then((token) => {
-      // Send and save this token in your backend.
-    });
-  }
+  notifme.checkWebpushSupport().then(function(isWebpushSupported) {
+    if (isWebpushSupported) {
+      notifme.register('/sw.js').then((token) => {
+        // Send and save this token in your backend.
+      });
+    }
+  });
 </script>
 ```
 
